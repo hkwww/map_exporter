@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="map_exporter" type="map_exporter_node" name="map_exporter_node" output="screen" respawn="false">
+        <param name="las_file_path" value="/home/hkw/20251011102314752.las"/>
+        <param name="output_path" value="/home/hkw/dataset/test_map"/>
+    </node>
+
+</launch>
