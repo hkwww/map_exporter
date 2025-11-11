@@ -66,6 +66,19 @@ bool MapExporter::LoadLasCloud(const std::string& file_path) {
   return true;
 }
 
+bool MapExporter::LoadPcdCloud(const std::string& file_path) {
+  CloudTypePtr raw_cloud(new CloudType);
+  if (pcl::io::loadPCDFile(file_path, *raw_cloud) == -1) {
+    std::cout << "Failed to load map cloud from " << file_path << std::endl;
+    return false;
+  }
+
+  map_cloud_ = CloudTypePtr(new CloudType);
+  mfla::DownsampleCloudAdapted(raw_cloud, map_cloud_, map_resolution_);
+
+  return true;
+}
+
 bool MapExporter::Export(const std::string& output_path) {
   // 1. Check Map path.
   if (!std::filesystem::exists(output_path)) {

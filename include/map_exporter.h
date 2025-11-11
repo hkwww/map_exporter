@@ -24,6 +24,11 @@ class MapExporter {
   /// \return true if success.
   bool LoadLasCloud(const std::string& file_path);
 
+  /// \brief Load pcd cloud.
+  /// \param file_path
+  /// \return true if success.
+  bool LoadPcdCloud(const std::string& file_path);
+
   /// \brief Export map to output path
   /// \param output_path
   /// \return true if success.
